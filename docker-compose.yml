@@ -1,0 +1,11 @@
+version: '2'
+services:
+
+  server:
+    restart: unless-stopped
+    image: rancher/server:stable
+    container_name: rancher-server
+    environment:
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+      - VIRTUAL_PORT=8080
+    command: --db-host ${DB_HOST} --db-user ${DB_USER} --db-pass ${DB_PASSWORD} --db-name ${DB_NAME}
